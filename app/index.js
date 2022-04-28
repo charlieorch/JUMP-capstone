@@ -56,6 +56,7 @@ app.get("/:num", (req, res) => {
     while (i--) roman = (key[+digits.pop() + i * 10] || "") + roman;
     return Array(+digits.join("") + 1).join("M") + roman;
   }
+  res.status(404).send("Sorry can't find that!");
   res.send(romanize(Object.values(req.params).toString()));
 });
 
