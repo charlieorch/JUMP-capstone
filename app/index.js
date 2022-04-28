@@ -59,10 +59,10 @@ app.get("/:num", (req, res) => {
   const numStr = Object.values(req.params).toString();
   const numInt = parseInt(numStr);
 
-  if (!isNaN(numInt)) {
-    res.send(romanize(numInt));
-  } else {
+  if (isNaN(numInt)) {
     res.status(404).send("Error: Page not found.");
+  } else {
+    res.send(romanize(numInt));
   }
 });
 
