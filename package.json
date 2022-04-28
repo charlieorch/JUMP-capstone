@@ -1,0 +1,24 @@
+{
+  "name": "jump-capstone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "genversion lib/version.js && other build stuff"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Starfloat/JUMP-capstone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Starfloat/JUMP-capstone/issues"
+  },
+  "homepage": "https://github.com/Starfloat/JUMP-capstone#readme",
+  "dependencies": {
+    "express": "^4.18.0",
+    "genversion": "^3.1.1"
+  }
+}
