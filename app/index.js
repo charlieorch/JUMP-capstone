@@ -7,7 +7,7 @@ app.get("/ping", (req, res) => {
 });
 
 app.get("/version", (req, res) => {
-  gv.generate("lib/version.js", function (err, version) {
+  gv.generate("lib/version.js", (err, version) => {
     if (err) {
       throw err;
     }
@@ -56,8 +56,14 @@ app.get("/:num", (req, res) => {
     while (i--) roman = (key[+digits.pop() + i * 10] || "") + roman;
     return Array(+digits.join("") + 1).join("M") + roman;
   }
-  res.status(404).send("Sorry can't find that!");
-  res.send(romanize(Object.values(req.params).toString()));
+  const numStr = Object.values(req.params).toString();
+  const numInt = parseInt(numStr);
+
+  if (isNaN(numInt)) {
+    res.status(404).send("Error: Page not found.");
+  } else {
+    res.send(romanize(numInt));
+  }
 });
 
 app.listen("3001", () => {
