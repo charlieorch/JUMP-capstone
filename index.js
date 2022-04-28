@@ -2,6 +2,19 @@ const express = require("express");
 const app = express();
 const gv = require("genversion");
 
+app.get("/ping", (req, res) => {
+  res.send("pong");
+});
+
+app.get("/version", (req, res) => {
+  gv.generate("lib/version.js", function (err, version) {
+    if (err) {
+      throw err;
+    }
+    res.send(version);
+  });
+});
+
 app.get("/:num", (req, res) => {
   function romanize(num) {
     if (isNaN(num)) return NaN;
@@ -44,19 +57,6 @@ app.get("/:num", (req, res) => {
     return Array(+digits.join("") + 1).join("M") + roman;
   }
   res.send(romanize(Object.values(req.params).toString()));
-});
-
-app.get("/ping", (req, res) => {
-  res.send("pong");
-});
-
-app.get("/version", (req, res) => {
-  gv.generate("lib/version.js", function (err, version) {
-    if (err) {
-      throw err;
-    }
-    res.send(version);
-  });
 });
 
 app.listen("3001", () => {
