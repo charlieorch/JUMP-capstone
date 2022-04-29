@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nodeapp-ingress-service
@@ -8,7 +8,24 @@ spec:
   rules:
     - http:
         paths:
-          - path: /
+          - pathType: Prefix
+            path: "/"
             backend:
-              serviceName: myapp-node-clusterip-service
-              servicePort: 3001
+              service:
+                name: myapp-node-clusterip-service
+                port:
+                  number: 80
+# apiVersion: networking.k8s.io/v1beta1
+# kind: Ingress
+# metadata:
+#   name: nodeapp-ingress-service
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+# spec:
+#   rules:
+#     - http:
+#         paths:
+#           - path: /
+#             backend:
+#               serviceName: myapp-node-clusterip-service
+#               servicePort: 3001
