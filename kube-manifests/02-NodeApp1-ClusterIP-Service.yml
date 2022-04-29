@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-node-clusterip-service
+  labels:
+    app: myapp-node
+spec:
+  type: ClusterIP
+  selector:
+    app: myapp-node
+  ports:
+    - port: 3001
+      targetPort: 3001
