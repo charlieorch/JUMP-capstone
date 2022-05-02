@@ -10,9 +10,9 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'd4e8d490-496c-49b1-bba5-2148d6c81060'
+  dockerRegistryServiceConnection: 'a0d73727-ed73-478f-a719-dd0bd1adbf74'
   imageRepository: 'charlieorchjumpcapstone'
-  containerRegistry: 'acrdemo1ss.azurecr.io'
+  containerRegistry: 'acrforakscapstone.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
   tag: '$(Build.BuildId)'
 
