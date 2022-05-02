@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-node-deployment
+  namespace: charlie
+  labels:
+    app: myapp-node
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp-node
+  template:
+    metadata:
+      labels:
+        app: myapp-node
+    spec:
+      containers:
+        - name: myapp-node
+          image: charlieorch/capstone-app:1.0.0
+          ports:
+            - containerPort: 3001
